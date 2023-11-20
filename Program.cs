@@ -6,9 +6,9 @@ var app = builder.Build();
 app.MapGet("/", () =>
 {
     var ipAddress = Dns.GetHostAddresses(Dns.GetHostName())
-                      .First(x => x.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
-                      .ToString();
-    return ipAddress;
+                        .First(x => x.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+                        .ToString();
+    return Results.Ok(ipAddress);
 });
 
 app.Run();
