@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8sipapi-deployment
+  annotations:
+    kubernetes.io/change-cause: "Initial deployment"
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: k8sipapi
+  template:
+    metadata:
+      labels:
+        app: k8sipapi
+        app.kubernetes.io/name: k8sipapi
+    spec:
+      containers:
+      - name: k8sipapi
+        image: bgokoglu78/k8sipapi:v1
+        ports:
+        - containerPort: 80
+          name: k8s-ipapi
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+          limits:
+            cpu: 200m
+            memory: 200Mi
+        env:
+          - name: ASPNETCORE_URLS
+            value: http://+:80
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: k8sipapi-lb-service
+spec:
+  selector:
+    app.kubernetes.io/name: k8sipapi
+  ports:
+    - protocol: TCP
+      port: 8087
+      targetPort: 80
+  type: LoadBalancer

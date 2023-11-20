@@ -18,3 +18,29 @@
 ```shell
 > docker push bgokoglu78/k8sipapi:v1
 ```
+
+---
+
+### Install kubectl
+```shell
+> brew install kubectl
+```
+```shell
+> kubectl version --client
+```
+```shell
+> kubectl cluster-info
+```
+
+### Run pods
+```shell
+> kubectl apply -f deployment.yaml
+```
+
+```shell
+> kubectl get all
+```
+
+```shell
+> kubectl delete -f deployment.yaml
+```

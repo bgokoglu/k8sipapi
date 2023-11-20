@@ -3,3 +3,6 @@ GET http://localhost:5003/
 
 ### DOCKER
 GET http://localhost:8085/
+
+### KUBERNETES
+GET http://localhost:8087/
