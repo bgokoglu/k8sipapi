@@ -42,5 +42,9 @@
 ```
 
 ```shell
+> kubectl get services -o wide
+```
+
+```shell
 > kubectl delete -f deployment.yaml
 ```
